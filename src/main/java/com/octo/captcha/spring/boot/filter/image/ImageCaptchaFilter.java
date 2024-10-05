@@ -28,8 +28,6 @@ import com.octo.captcha.module.jmx.JMXRegistrationHelper;
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.ManageableCaptchaService;
 import com.octo.captcha.service.image.ImageCaptchaService;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
