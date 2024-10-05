@@ -41,6 +41,8 @@ import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import javax.imageio.ImageIO;
+
 public class ImageCaptchaFilter implements Filter {
 	public static final String JMX_REGISTERING_NAME = "com.octo.captcha.module.servlet:object=ImageCaptchaFilter";
 	public static final String CSV_DELIMITER = ";";
@@ -167,10 +169,9 @@ public class ImageCaptchaFilter implements Filter {
 
 		try {
 			BufferedImage challenge = this.captchaService.getImageChallengeForID(captchaID, theRequest.getLocale());
-			JPEGImageEncoder jpegEncoder = JPEGCodec.createJPEGEncoder(jpegOutputStream);
-			jpegEncoder.encode(challenge);
-		} catch (IllegalArgumentException var8) {
-			return;
+			/*JPEGImageEncoder jpegEncoder = JPEGCodec.createJPEGEncoder(jpegOutputStream);
+			jpegEncoder.encode(challenge);*/
+			ImageIO.write(challenge, "jpeg", jpegOutputStream);
 		} catch (CaptchaServiceException var9) {
 			theResponse.sendError(404);
 			return;
